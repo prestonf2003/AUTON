@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.fitst.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.commands.*;
@@ -28,10 +30,13 @@ public class Robot extends TimedRobot {
   public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
   public static OI m_oi;
   public static Drivetrain m_drivetrain = null;
-  public static  
+  public static Encoder m_leftDrive;
+  public static Encoder m_rightDrive;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
+
+
 
   /**
    * This function is run when the robot is first started up and should be
@@ -41,7 +46,16 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_oi = new OI();
     m_drivetrain = new Drivetrain();
-    
+
+    tworkTable table = NetworkTable.getTable("SmartDashboard");
+table.putStringArray("Auto List", autoList);
+auto = new SendableChooser;
+auto.addDefault("No Auto", new AutoNone());
+auto.addObject("BaseLine", new AutoBaseLine());
+auto.addObject("Test Drive Only", new AutoTestDriveOnly());
+
+SmartDashboard.putData("Auto modes", auto);
+
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
@@ -66,6 +80,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
+  Robot.m_drivetrain.ResetEncoders();
   }
 
   @Override
