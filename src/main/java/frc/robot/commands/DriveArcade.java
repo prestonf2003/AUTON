@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
+
 public class DriveArcade extends Command {
   public DriveArcade() {
     requires(Robot.m_drivetrain);
@@ -24,8 +25,8 @@ public class DriveArcade extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-  double LTrigger = Robot.m_oi.driverController.getRawAxis(RobotMap.DRIVER_CONTROLLER_TRIGGER_L_AXIS)
-  double RTrigger = Robot.m_oi.driverController.getRawAxis(RobotMap.DRIVER_CONTROLLER_TRIGGER_R_AXIS)
+  double LTrigger = Robot.m_oi.driverController.getRawAxis(RobotMap.DRIVER_CONTROLLER_TRIGGER_L_AXIS);
+  double RTrigger = Robot.m_oi.driverController.getRawAxis(RobotMap.DRIVER_CONTROLLER_TRIGGER_R_AXIS);
   boolean slow = Robot.m_oi.driverController.getRawButton(3);
   double throttle = (RTrigger - LTrigger);
   if (slow == true)
