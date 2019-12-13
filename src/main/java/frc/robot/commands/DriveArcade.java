@@ -31,7 +31,7 @@ public class DriveArcade extends Command {
   if (slow == true)
   throttle = throttle * 0.5;
 
-  double rotateSpeed = Robot.m_oi.driverController.getrawAxis(RobotMap.OI_DRIVER_CONTROLLER_ROTATE_AXIS);
+  double rotateSpeed = Robot.m_oi.driverController.getRawAxis(RobotMap.OI_DRIVER_CONTROLLER_ROTATE_AXIS);
   if (slow == true)
   rotateSpeed = rotateSpeed * 0.5;
 
@@ -58,6 +58,6 @@ public class DriveArcade extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    end;
+    
   }
 }

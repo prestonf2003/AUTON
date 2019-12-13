@@ -8,7 +8,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
@@ -18,21 +18,21 @@ import frc.robot.commands.DriveArcade;
  * Add your docs here.
  */
 public class Drivetrain extends Subsystem {
-CANTalon rCANTalon = null;
-CANTalon rCANTalon2 = null;
-CANTalon lCANTalon = null;
-CANTalon lCANTalon2 = null;
+Talon rTalon = null;
+Talon rTalon2 = null;
+Talon lTalon = null;
+Talon lTalon2 = null;
 
 DifferentialDrive differentialDrive = null;
 
 public Drivetrain () {
-  lCANTalon = new CANTalon(RobotMap.DRIVETRAIN_LEFT_FRONT_TALON);
-  lCANTalon2 = new CANTalon(RobotMap.DRIVETRAIN_LEFT_BACK_TALON);
-  rCANTalon = new CANTalon(RobotMap.DRIVETRAIN_RIGHT_FRONT_TALON);
-  rCANTalon2 = new CANTalon(RobotMap.DRIVETRAIN_RIGHT_BACK_TALON);
+  lTalon = new Talon(RobotMap.DRIVETRAIN_LEFT_FRONT_TALON);
+  lTalon2 = new Talon(RobotMap.DRIVETRAIN_LEFT_BACK_TALON);
+  rTalon = new Talon(RobotMap.DRIVETRAIN_RIGHT_FRONT_TALON);
+  rTalon2 = new Talon(RobotMap.DRIVETRAIN_RIGHT_BACK_TALON);
 
-  SpeedControllerGroup leftMotors = new SpeedControllerGroup(lCANTalon, lCANTalon2);
-  SpeedControllerGroup rightMotors = new SpeedControllerGroup(rCANTalon, rCANTalon2);
+  SpeedControllerGroup leftMotors = new SpeedControllerGroup(lTalon, lTalon2);
+  SpeedControllerGroup rightMotors = new SpeedControllerGroup(rTalon, rTalon2);
 
   differentialDrive = new DifferentialDrive(leftMotors, rightMotors);
 
